@@ -11,16 +11,16 @@ class User {
     this.imageUrl = imageUrl;
   }
 
-  // ✅ Return the Promise from save()
   save() {
     const db = getDb();
     return db
-      .collection("users")
+      .collection("User")
       .insertOne({
         name: this.name,
         email: this.email,
         phone: this.phone,
         imageUrl: this.imageUrl,
+        cart: { items: [] },
       })
       .then((result) => {
         console.log("Inserted user with ID:", result.insertedId);
@@ -32,11 +32,10 @@ class User {
       });
   }
 
-  // ✅ Static method to find user by ID
   static findById(userId) {
     const db = getDb();
     return db
-      .collection("users")
+      .collection("User")
       .findOne({ _id: new ObjectId(userId) })
       .then((user) => {
         if (!user) {

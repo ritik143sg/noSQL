@@ -1,0 +1,4 @@
+    "Ritik Kumar",
+    "ritik@example.com",
+    "1234567890",
+    "http://example.com/image.jpg"
